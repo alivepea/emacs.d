@@ -4,3 +4,9 @@
 [submodule "site-lisp/html5-el"]
 	path = site-lisp/html5-el
 	url = https://github.com/hober/html5-el.git
+[submodule "site-lisp/git-emacs"]
+	path = site-lisp/git-emacs
+	url = https://github.com/tsgates/git-emacs.git
+[submodule "site-lisp/eim"]
+	path = site-lisp/eim
+	url = https://github.com/viogus/eim.git

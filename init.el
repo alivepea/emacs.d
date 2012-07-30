@@ -104,6 +104,7 @@
 (require 'init-shell)
 (require 'init-eim)
 (require 'git-emacs)
+(require 'taglist)
 
 (provide 'init)
 
