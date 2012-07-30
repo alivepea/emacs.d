@@ -100,6 +100,12 @@
 ;;----------------------------------------------------------------------------
 (require 'init-locales)
 
+(require 'datastruct-to-dot)
+(require 'init-shell)
+(require 'init-eim)
+(require 'git-emacs)
+
+(provide 'init)
 
 ;; Local Variables:
 ;; no-byte-compile: t

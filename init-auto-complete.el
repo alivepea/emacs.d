@@ -1,7 +1,7 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
-(setq ac-auto-start nil)
+(setq ac-auto-start 4)
 (setq ac-dwim nil) ; To get pop-ups with docs even if a word is uniquely completed
 (define-key ac-completing-map (kbd "C-n") 'ac-next)
 (define-key ac-completing-map (kbd "C-p") 'ac-previous)
@@ -20,9 +20,14 @@
 
 (set-default 'ac-sources
              '(ac-source-dictionary
+               ac-source-files-in-current-dir
+               ac-source-filename
+               ac-source-yasnippet
+               ac-source-functions
                ac-source-words-in-buffer
                ac-source-words-in-same-mode-buffers
                ac-source-words-in-all-buffer))
+
 
 (dolist (mode '(magit-log-edit-mode log-edit-mode org-mode text-mode haml-mode
                 sass-mode yaml-mode csv-mode espresso-mode haskell-mode
@@ -31,6 +36,7 @@
                 js3-mode css-mode less-css-mode))
   (add-to-list 'ac-modes mode))
 
+(add-to-list 'ac-modes 'cc-mode)
 
 ;; Exclude very large buffers from dabbrev
 (defun sanityinc/dabbrev-friend-buffer (other-buffer)
