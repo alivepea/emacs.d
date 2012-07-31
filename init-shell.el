@@ -13,6 +13,15 @@
 (global-set-key [f8] 'shell-pop)
 
 ;;; dirtrack
+;;; PS1="|PrOmPt|\w|$PS1"
+;; Now strip the goofy strings from the prompt before it gets into
+;; the shell buffer.
+(defun dirtrack-filter-out-pwd-prompt (string)
+  "dirtrack-mode doesn't remove the PWD match from the prompt.  This does."
+  (if (and (stringp string) (string-match (first dirtrack-list) string))
+      (replace-match "" t t string 0)
+    string))
+
 (add-hook 'shell-mode-hook
           (lambda ()
             (setq dirtrack-list '("^|PrOmPt|\\([^|]*\\)|" 1 nil))
