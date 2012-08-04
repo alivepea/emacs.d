@@ -47,6 +47,8 @@ and the point, not include the isearch word."
     (isearch-exit)
     ))
 
+(setq isearch-allow-scroll t)
+
 (define-key isearch-mode-map [(meta z)] 'zap-to-isearch)
 
 
@@ -60,5 +62,6 @@ This is useful when followed by an immediate kill."
 
 (define-key isearch-mode-map [(control return)] 'isearch-exit-other-end)
 
+(setq isearch-allw-scroll t)
 
 (provide 'init-isearch)
