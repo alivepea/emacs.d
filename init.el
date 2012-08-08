@@ -106,6 +106,8 @@
 (require 'git-emacs)
 (require 'taglist)
 (require 'init-tex)
+(require 'init-woman)
+
 
 (provide 'init)
 
