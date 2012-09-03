@@ -107,6 +107,7 @@
 (require 'taglist)
 (require 'init-tex)
 (require 'init-woman)
+(require 'init-gtags)
 
 
 (provide 'init)
