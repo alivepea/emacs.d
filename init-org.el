@@ -76,4 +76,13 @@
 
 (add-hook 'org-mode-hook 'inhibit-autopair)
 
+(setq org-directory "/home/db/Dropbox/org")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+
+;;; templates
+;; (setq org-capture-templates
+;;       '("j" "Journal" entry (file+datetree (concat org-directory "/journal.org"))
+;;         "*"))
+
 (provide 'init-org)
