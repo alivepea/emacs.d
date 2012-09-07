@@ -108,7 +108,7 @@
 (require 'init-tex)
 (require 'init-woman)
 (require 'init-gtags)
-
+(require 'init-epa)
 
 (provide 'init)
 
