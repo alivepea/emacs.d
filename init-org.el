@@ -108,4 +108,22 @@
          "* %?\nCreated: %T\n	%i\n")
         ("s" "temp memory" plain (id))))
 
+(add-hook 'org-mode-hook
+          (lambda () (imenu-add-to-menubar "Imenu")))
+;; By default the index is two levels deep--you can modify the depth
+;; using the option `org-imenu-depth'.
+
+(setq org-use-speed-commands t)
+
+;;; conflict packages
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (org-set-local 'yas/trigger-key [tab])
+            (define-key yas/keymap [tab] 'yas/next-field-or-maybe-expand)))
+
 (provide 'init-org)
