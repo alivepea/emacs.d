@@ -1,7 +1,11 @@
+(add-hook 'dired-mode-hook
+          '(lambda ()
+             (gtags-mode 1)))
+
 (add-hook 'c-mode-hook
-   '(lambda ()
-      (gtags-mode 1)
-))
+          '(lambda ()
+             (gtags-mode 1)
+             ))
 
 (add-hook 'gtags-select-mode-hook
           '(lambda ()
