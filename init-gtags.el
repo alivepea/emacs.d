@@ -2,7 +2,7 @@
           '(lambda ()
              (gtags-mode 1)))
 
-(add-hook 'c-mode-hook
+(add-hook 'c-mode-common-hook
           '(lambda ()
              (gtags-mode 1)
              ))
