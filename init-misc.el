@@ -11,5 +11,7 @@
 
 (setq-default regex-tool-backend 'perl)
 
+(require 'pretty-mode)
+(global-pretty-mode t)
 
 (provide 'init-misc)
