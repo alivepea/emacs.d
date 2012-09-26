@@ -74,18 +74,15 @@ ARCHIVE is the string name of the package archive.")
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
+(defvar melpa-exclude-packages
+  '(slime)
+  "Don't install Melpa versions of these packages.")
+
 ;; Don't take Melpa versions of certain packages
 (setq package-filter-function
       (lambda (package version archive)
         (or (not (string-equal archive "melpa"))
-            (not (memq package
-                       '(
-                         ruby-compilation
-                         slime
-                         color-theme-sanityinc-solarized
-                         color-theme-sanityinc-tomorrow
-                         elisp-slime-nav
-                         findr))))))
+            (not (memq package melpa-exclude-packages)))))
 
 
 ;;------------------------------------------------------------------------------
@@ -97,11 +94,12 @@ ARCHIVE is the string name of the package archive.")
 (require-package 'ido-ubiquitous)
 (when (< emacs-major-version 24)
   (require-package 'color-theme))
+(require-package 'auto-complete)
 (require-package 'ace-jump-mode)
 (require-package 'fill-column-indicator)
-(require-package 'mark-multiple)
+(require-package 'multiple-cursors)
+(require-package 'expand-region)
 (require-package 'fringe-helper)
-(require-package 'popup)
 (require-package 'gnuplot)
 (require-package 'haskell-mode)
 (require-package 'tuareg)
@@ -144,6 +142,7 @@ ARCHIVE is the string name of the package archive.")
 (require-package 'clojure-mode)
 (require-package 'clojure-test-mode)
 (require-package 'clojurescript-mode)
+(require-package 'nrepl)
 (require-package 'diminish)
 (require-package 'autopair)
 (require-package 'js-comint)
@@ -160,12 +159,14 @@ ARCHIVE is the string name of the package archive.")
 
 ;; I maintain this chunk:
 (require-package 'ac-slime)
+(require-package 'ac-nrepl)
 (require-package 'coffee-mode)
 (require-package 'color-theme-sanityinc-solarized)
 (require-package 'color-theme-sanityinc-tomorrow)
 (require-package 'crontab-mode)
 (require-package 'dsvn)
 (require-package 'elisp-slime-nav)
+(require-package 'exec-path-from-shell)
 (require-package 'flymake-coffee)
 (require-package 'flymake-css)
 (require-package 'flymake-haml)
