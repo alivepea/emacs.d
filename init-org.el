@@ -126,4 +126,7 @@
             (org-set-local 'yas/trigger-key [tab])
             (define-key yas/keymap [tab] 'yas/next-field-or-maybe-expand)))
 
+(setq org-tags-column -77)
+(setq org-pretty-entities t)
+
 (provide 'init-org)
