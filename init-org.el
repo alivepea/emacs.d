@@ -1,6 +1,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.note$" . org-mode))
 
 ;; Various preferences
 (setq org-log-done t
@@ -77,7 +78,7 @@
 (add-hook 'org-mode-hook 'inhibit-autopair)
 
 (setq org-directory "/home/db/Dropbox/org")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-default-notes-file (concat org-directory "/misc.note"))
 (define-key global-map "\C-cc" 'org-capture)
 
 ;;; crypt
@@ -104,9 +105,13 @@
 (setq org-capture-templates
       '(("J" "Personal Journal" entry (file+datetree (concat org-directory "/PJournal.org"))
          "* %?\nCreated: %T\n	%i\n")
-        ("j" "work Journal" entry (file+datetree (concat org-directory "/WJournal.org"))
+        ("j" "Journal" entry (file+datetree (concat org-directory "/dairy.org"))
          "* %?\nCreated: %T\n	%i\n")
-        ("s" "temp memory" plain (id))))
+        ("t" "TODO" entry (file (concat org-directory "/todo.org"))
+         "* TODO %?\n%U\n%a\n")
+        ("n" "Take a note" entry (file (concat org-directory "/notes.org"))
+         "* %?\n%U\n")
+        ))
 
 (add-hook 'org-mode-hook
           (lambda () (imenu-add-to-menubar "Imenu")))
@@ -127,5 +132,6 @@
             (define-key yas/keymap [tab] 'yas/next-field-or-maybe-expand)))
 
 (setq org-tags-column -77)
+(setq org-pretty-entities t)
 
 (provide 'init-org)
