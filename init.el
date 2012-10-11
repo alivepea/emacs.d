@@ -109,6 +109,7 @@
 (require 'init-woman)
 (require 'init-gtags)
 (require 'init-epa)
+(require 'init-cmode)
 
 (provide 'init)
 
