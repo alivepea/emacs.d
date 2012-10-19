@@ -25,7 +25,7 @@
 
 
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+      (quote ((sequence "TODO(t!)" "STARTED(s!)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "SOMEDAY(S)" "PROJECT(P@)" "|" "CANCELLED(c@/!)"))))
 
 
@@ -78,7 +78,7 @@
 (add-hook 'org-mode-hook 'inhibit-autopair)
 
 (setq org-directory "/home/db/Dropbox/org")
-(setq org-default-notes-file (concat org-directory "/misc.note"))
+(setq org-default-notes-file (concat org-directory "/misc.org"))
 (define-key global-map "\C-cc" 'org-capture)
 
 ;;; crypt
@@ -107,8 +107,8 @@
          "* %?\nCreated: %T\n	%i\n")
         ("j" "Journal" entry (file+datetree (concat org-directory "/dairy.org"))
          "* %?\nCreated: %T\n	%i\n")
-        ("t" "TODO" entry (file (concat org-directory "/todo.org"))
-         "* TODO %?\n%U\n%a\n")
+        ("t" "TODO" entry (file+headline (concat org-directory "/todo.org") "Tasklist")
+         "* TODO %?\n%U\n\n")
         ("n" "Take a note" entry (file (concat org-directory "/notes.org"))
          "* %?\n%U\n")
         ))
@@ -119,6 +119,9 @@
 ;; using the option `org-imenu-depth'.
 
 (setq org-use-speed-commands t)
+
+;; (setq org-agenda-file-regexp "")
+(setq org-agenda-files   (concat org-directory ""))
 
 ;;; conflict packages
 (add-hook 'org-shiftup-final-hook 'windmove-up)
