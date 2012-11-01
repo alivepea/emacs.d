@@ -120,8 +120,8 @@
 
 (setq org-use-speed-commands t)
 
-;; (setq org-agenda-file-regexp "")
-(setq org-agenda-files   (concat org-directory ""))
+;;(setq org-agenda-file-regexp "\\`[^.].*\\.org|prj\\'")
+(setq org-agenda-files   (quote ("/home/db/Dropbox/org")))
 
 ;;; conflict packages
 (add-hook 'org-shiftup-final-hook 'windmove-up)
