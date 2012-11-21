@@ -14,4 +14,5 @@
 (require 'pretty-mode)
 (global-pretty-mode t)
 
+(global-set-key [C-tab] 'other-window)
 (provide 'init-misc)

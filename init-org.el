@@ -129,10 +129,10 @@
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (org-set-local 'yas/trigger-key [tab])
-            (define-key yas/keymap [tab] 'yas/next-field-or-maybe-expand)))
+; (add-hook 'org-mode-hook
+          ; (lambda ()
+            ; (org-set-local 'yas/trigger-key [tab])
+            ; (define-key yas/keymap [tab] 'yas/next-field-or-maybe-expand)))
 
 (setq org-tags-column -77)
 (setq org-pretty-entities t)
