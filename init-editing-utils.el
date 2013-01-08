@@ -23,6 +23,10 @@
  truncate-partial-width-windows nil
  visible-bell t)
 
+;; But don't show trailing whitespace in SQLi, inf-ruby etc.
+(add-hook 'comint-mode-hook
+          (lambda () (setq show-trailing-whitespace nil)))
+
 (transient-mark-mode t)
 
 
@@ -51,17 +55,6 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;;----------------------------------------------------------------------------
-;; Autopair quotes and parentheses
-;;----------------------------------------------------------------------------
-(require 'autopair)
-(setq autopair-autowrap t)
-(autopair-global-mode t)
-
-(defun inhibit-autopair ()
-  "Prevent autopair from enabling in the current buffer."
-  (setq autopair-dont-activate t)
-  (autopair-mode -1))
 
 ;;----------------------------------------------------------------------------
 ;; Fix per-window memory of buffer point positions
@@ -130,6 +123,21 @@
 
 
 
+(defun kill-back-to-indentation ()
+  "Kill from point back to the first non-whitespace character on the line."
+  (interactive)
+  (let ((prev-pos (point)))
+    (back-to-indentation)
+    (kill-region (point) prev-pos)))
+
+(global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
+
+
+;;----------------------------------------------------------------------------
+;; Page break lines
+;;----------------------------------------------------------------------------
+(global-page-break-lines-mode)
+
 ;;----------------------------------------------------------------------------
 ;; Fill column indicator
 ;;----------------------------------------------------------------------------
@@ -142,17 +150,29 @@
 
   (add-hook 'prog-mode-hook 'sanityinc/prog-mode-fci-settings)
 
+  (defun sanityinc/fci-enabled-p ()
+    (and (boundp 'fci-mode) fci-mode))
+
   (defvar sanityinc/fci-mode-suppressed nil)
   (defadvice popup-create (before suppress-fci-mode activate)
     "Suspend fci-mode while popups are visible"
-    (set (make-local-variable 'sanityinc/fci-mode-suppressed) fci-mode)
-    (when fci-mode
-      (turn-off-fci-mode)))
+    (let ((fci-enabled (sanityinc/fci-enabled-p)))
+      (when fci-enabled
+        (set (make-local-variable 'sanityinc/fci-mode-suppressed) fci-enabled)
+        (turn-off-fci-mode))))
   (defadvice popup-delete (after restore-fci-mode activate)
     "Restore fci-mode when all popups have closed"
-    (when (and (not popup-instances) sanityinc/fci-mode-suppressed)
+    (when (and sanityinc/fci-mode-suppressed
+               (null popup-instances))
       (setq sanityinc/fci-mode-suppressed nil)
-      (turn-on-fci-mode))))
+      (turn-on-fci-mode)))
+
+  ;; Regenerate fci-mode line images after switching themes
+  (defadvice enable-theme (after recompute-fci-face activate)
+    (dolist (buffer (buffer-list))
+      (with-current-buffer buffer
+        (when (sanityinc/fci-enabled-p)
+          (turn-on-fci-mode))))))
 
 
 ;;----------------------------------------------------------------------------
