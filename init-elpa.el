@@ -75,7 +75,7 @@ ARCHIVE is the string name of the package archive.")
 ;; Also use Melpa for some packages built straight from VC
 ;;------------------------------------------------------------------------------
 
-;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/")) ;
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/")) ;
 
 (defvar melpa-exclude-packages
   '(slime)
