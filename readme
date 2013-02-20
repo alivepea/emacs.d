@@ -1,0 +1,5 @@
+master 分支 fork purcell 分支，主要用于web的开发。
+启动速度慢，配置冲突，快捷键冲突。
+
+所以，新建了 renaissence 分支, 根据自己的需要书写配置。
+以后，master 分支将只作为参考，不再使用。
