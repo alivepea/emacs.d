@@ -3,6 +3,7 @@
 (setq inhibit-startup-message t) 
 (set-scroll-bar-mode nil)
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 
 (setq frame-title-format
       '(buffer-file-name

@@ -1,6 +1,6 @@
 
 (if (fboundp 'normal-top-level-add-to-load-path)
-    (let* ((my-lisp-dir "~/_emacs/site-lisp/")
+    (let* ((my-lisp-dir "~/.emacs.d/site-lisp/")
            (default-directory my-lisp-dir))
       (progn
         (setq load-path
