@@ -22,6 +22,8 @@
                                    (global-set-key [(shift meta x)] 'smex-major-mode-commands)
                                    (smex-major-mode-commands)))
 
+(setq smex-prompt-string "M-x(smex) ")
+
 (defun smex-update-after-load (unused)
   (when (boundp 'smex-cache)
     (smex-update)))

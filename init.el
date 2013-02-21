@@ -10,9 +10,9 @@
 (require 'init-completion)
 (require 'init-dired)
 (require 'init-diff)
-
 (require 'init-eim)
 
+(require 'init-org)
 (require 'init-ccmode)
 (require 'init-tags)
 (require 'init-term)

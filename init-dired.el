@@ -33,5 +33,9 @@
 		  "BAR-COMMAND-1"
 		"BAR-COMMAND-2"))))
 
+(add-hook 'dired-mode-hook
+	  '(lambda ()
+	     (set (make-local-variable 'ido-enable-replace-completing-read) nil)))
+
 
 (provide 'init-dired)

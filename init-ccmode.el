@@ -24,7 +24,8 @@
 
 (add-hook 'c-mode-hook
 	  '(lambda ()
-	     (hs-minor-mode t)))
+	     (hs-minor-mode t)
+	     (setq show-trailing-whitespace t)))
 
 (which-function-mode t)
 
