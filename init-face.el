@@ -34,5 +34,6 @@
 (setq x-stretch-cursor t)
 (setq show-trailing-whitespace t)
 
+(global-set-key (kbd "<f1>") 'menu-bar-mode)
 
 (provide 'init-face)

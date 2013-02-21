@@ -14,6 +14,7 @@
 
 (require 'init-org)
 (require 'init-ccmode)
+(require 'init-compilation)
 (require 'init-tags)
 (require 'init-term)
 
