@@ -17,6 +17,7 @@
 (require 'init-compilation)
 (require 'init-tags)
 (require 'init-term)
+(require 'init-markdown)
 
 (require 'git-emacs)
 
