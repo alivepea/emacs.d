@@ -9,6 +9,7 @@
 (require 'init-snippet)
 (require 'init-completion)
 (require 'init-dired)
+(require 'init-diff)
 
 (require 'init-eim)
 
@@ -17,5 +18,6 @@
 (require 'init-term)
 
 (require 'git-emacs)
+
 
 (require 'init-misc)
