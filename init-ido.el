@@ -1,6 +1,7 @@
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
+(setq ido-ubiquitous-mode t)
 (ido-mode 1)
 
 (setq ido-max-prospects 24)
