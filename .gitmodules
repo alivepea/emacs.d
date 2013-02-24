@@ -1,0 +1,15 @@
+[submodule "ace-jump-mode"]
+	   path = site-lisp/ace-jump-mode
+	   url = https://github.com/winterTTr/ace-jump-mode.git
+[submodule "eim"]
+	   path = site-lisp/eim
+	   url = https://github.com/viogus/eim.git
+[submodule "git-emacs"]
+	   path = site-lisp/git-emacs
+	   url = https://github.com/tsgates/git-emacs.git
+[submodule "jump-char"]
+	   path = site-lisp/jump-char
+	   url = https://github.com/lewang/jump-char.git
+[submodule "ido-ubiquitous"]
+	   path = site-lisp/ido-ubiquitous
+	   url = https://github.com/technomancy/ido-ubiquitous.git

@@ -1,14 +1,16 @@
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
-(setq ido-ubiquitous-mode t)
 (ido-mode 1)
+(setq ido-ubiquitous-mode t)
+(require 'ido-ubiquitous)
+
 
 (setq ido-max-prospects 24)
 
 ;; smex built on ido
 (setq smex-prompt-string "M-x(smex) ")
-(setq smex-save-file "~/.smex.save")
+(setq smex-save-file "~/.emacs.d/.smex.save")
 (setq smex-history-length 14)
 ;; This delays initializing smex until it’s needed
 (global-set-key [(meta x)] (lambda ()

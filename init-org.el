@@ -97,16 +97,18 @@
      ;; (require 'org-fstree)
      ))
 
-(add-hook 'org-mode-hook 'inhibit-autopair)
+;; (add-hook 'org-mode-hook 'inhibit-autopair)
 
 (setq org-directory "/home/db/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "/misc.org"))
 (define-key global-map "\C-cc" 'org-capture)
 
-;;; crypt
-(require 'org-crypt)
-(org-crypt-use-before-save-magic)
-(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+;;; delay org-crypt start for its' slowly
+(defun enable-crypt()
+  (require 'org-crypt)
+  (org-crypt-use-before-save-magic)
+  (setq org-tags-exclude-from-inheritance (quote ("crypt"))))
+(add-hook 'org-mode-hook 'enable-crypt)
 
 (setq org-crypt-key nil)
 ;; GPG key to use for encryption

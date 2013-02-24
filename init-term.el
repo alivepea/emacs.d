@@ -6,9 +6,10 @@
 	     (make-local-variable
 	      'mouse-yank-at-point)
 	     (make-local-variable 'transient-mark-mode)
+	     (auto-fill-mode -1)
 	     (setq mouse-yank-at-point t)
 	     (setq transient-mark-mode nil)
-	     (auto-fill-mode -1)
+	     (setq scroll-margin 0)
 	     (setq tab-width 8 ))))
 
 ;; enable cua and transient mark modes in term-line-mode

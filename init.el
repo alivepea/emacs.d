@@ -1,8 +1,8 @@
 ;; -*- coding: utf-8 -*-
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 
-(require 'init-face)
 (require 'init-site-lisp)
+(require 'init-face)
 (require 'init-ido)
 (require 'init-minibuffer)
 (require 'init-edit)
