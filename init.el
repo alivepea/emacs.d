@@ -21,5 +21,9 @@
 
 (require 'git-emacs)
 
-
 (require 'init-misc)
+
+(message (concat "startup eclipse: "
+	  (number-to-string
+	   (time-to-seconds
+	    (time-subtract (current-time) before-init-time)))))

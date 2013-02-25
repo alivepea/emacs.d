@@ -1,0 +1,7 @@
+PREREQUISITE:
+For gentoo:
+    $ emerge auto-complete yasnippet zenburn smex
+
+Install packages NOT in gentoo's portage:
+    $ git submodule init
+    $ git submodule update
