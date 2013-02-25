@@ -30,6 +30,8 @@
   (set (make-local-variable 'transient-mark-mode) nil))
 (ad-activate 'term-char-mode)
 
+(setq term-buffer-maximum-size 20480)
+
 
 (provide 'init-term)
 
