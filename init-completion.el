@@ -13,7 +13,7 @@
 (ac-set-trigger-key "TAB")
 (setq ac-fuzzy-enable t)
 
-(add-to-list 'ac-user-dictionary-files "~/.dict")
+(add-to-list 'ac-user-dictionary-files "~/.emacs.d/.dict")
 
 (ac-flyspell-workaround)		;Auto completion will not be started in a buffer flyspell-mode enabled
 
