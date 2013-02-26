@@ -4,6 +4,7 @@
 (require 'init-site-lisp)
 (require 'init-face)
 (require 'init-speedbar)
+(require 'init-window)
 (require 'init-ido)
 (require 'init-buffer)
 (require 'init-minibuffer)
@@ -13,6 +14,7 @@
 (require 'init-dired)
 (require 'init-diff)
 (require 'init-eim)
+(require 'init-browser)
 
 (require 'init-org)
 (require 'init-ccmode)
