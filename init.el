@@ -3,7 +3,9 @@
 
 (require 'init-site-lisp)
 (require 'init-face)
+(require 'init-speedbar)
 (require 'init-ido)
+(require 'init-buffer)
 (require 'init-minibuffer)
 (require 'init-edit)
 (require 'init-snippet)
