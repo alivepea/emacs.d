@@ -13,3 +13,6 @@
 [submodule "ido-ubiquitous"]
 	   path = site-lisp/ido-ubiquitous
 	   url = https://github.com/technomancy/ido-ubiquitous.git
+[submodule "site-lisp/el-get"]
+	path = site-lisp/el-get
+	url = https://github.com/dimitri/el-get.git

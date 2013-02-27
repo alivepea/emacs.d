@@ -45,7 +45,5 @@
       woman-use-own-frame nil           ;同一个frame
       woman-cache-level 3)              ;缓存级别, 最快
 
-(global-set-key (kbd "C-<tab>") 'other-window)
-
 
 (provide 'init-misc)
