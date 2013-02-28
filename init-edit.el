@@ -3,11 +3,36 @@
 
 (electric-pair-mode t)
 
-(global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key (kbd "C-x C-w") 'kill-region)
 
 (setq kill-read-only-ok t)
 (setq kill-do-not-save-duplicates t)
+
+(defun copy-above-to-char (arg char)
+  "Copy all characters from the previous line beginning with the
+character currently above the cursor up to the ARGth occurrence
+of CHAR."
+  (interactive "p\ncCopy to char: ")
+  (let* ((col (current-column))
+         (n (save-excursion
+              (forward-line -1)
+              (move-to-column col)
+              (search-forward (char-to-string char)
+                              (line-end-position) nil arg)
+              (- (current-column) col))))
+    (copy-from-above-command n)))
+
+
+(autoload 'copy-from-above-command "misc"
+  "Copy characters from previous nonblank line, starting just above point.
+  \(fn &optional arg)"
+  'interactive)
+
+(global-set-key (kbd "C-<up>")
+		(lambda ()
+		  (interactive)
+		  (copy-from-above-command 1)))
 
 
 (provide 'init-edit)

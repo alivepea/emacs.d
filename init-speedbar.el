@@ -3,6 +3,7 @@
 (setq speedbar-show-unknown-files t)
 (setq sr-speedbar-skip-other-window-p t) ;awesome+sppedbar is better
 (setq speedbar-show-unknown-files t)
+(setq speedbar-use-images nil)
 
 (add-hook
  'speedbar-timer-hook
