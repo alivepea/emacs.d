@@ -32,5 +32,10 @@
     (smex-update)))
 (add-hook 'after-load-functions 'smex-update-after-load)
 
+;; avoid slow emacs
+(ido-ubiquitous-disable-in gtags-find-tag)
+(ido-ubiquitous-disable-in gtags-find-rtag)
+(ido-ubiquitous-disable-in gtags-find-symbol)
+
 
 (provide 'init-ido)
