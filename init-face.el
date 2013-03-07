@@ -29,7 +29,8 @@
 	       :height 120)
 
 ;; theme
-(color-theme-zenburn)
+(color-theme-initialize)
+(color-theme-classic)
 
 (setq x-stretch-cursor t)
 (setq show-trailing-whitespace t)
