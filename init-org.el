@@ -1,6 +1,8 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.note$" . org-mode))
-;; (global-set-key (kbd "C-c a" 'org-agenda)
+
+(setq org-pretty-entities t)
+(setq org-use-speed-commands t)
 
 ;; Various preferences
 (setq org-log-done t
@@ -15,6 +17,49 @@
       org-tags-column 80
       org-startup-indented t)
 
+;; Org capture
+(setq org-directory "/home/db/Dropbox/org")
+(global-set-key (kbd "<C-f1>") 'org-capture)
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline (concat org-directory "/gtd.org") "Tasks")
+	 "* TODO %?\n" :empty-lines 1)
+        ("j" "Journal" entry (file+datetree (concat org-directory "/journal.org"))
+	 "* %?\n%i\n")))
+
+
+;; recursively find .org files in provided directory
+;; modified from an Emacs Lisp Intro example
+(defun find-org-file-recursively (directory &optional filext)
+  "Return .org and .org_archive files recursively from DIRECTORY.
+If FILEXT is provided, return files with extension FILEXT instead."
+  (interactive "DDirectory name: ")
+  ;; Bind variables
+  ;; (if (not (boundp 'directory))
+  ;;     (setq directory (read-directory-name "Directory to search: ")))
+  (let* (org-file-list
+	 (case-fold-search t)		; filesystems are case sensitive
+	 (fileregex (if filext (format "^[^.#].*\\.\\(%s$\\)" filext)
+		      "^[^.#].*\\.\\(org$\\|org_archive$\\)"))
+	 (cur-dir-list (directory-files directory t "^[^.#].*"))) ; exclude .*
+    ;; loop over directory listing
+    (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
+      (cond
+       ((file-regular-p file-or-dir) ; regular files
+	(if (string-match fileregex file-or-dir) ; org files
+	    (add-to-list 'org-file-list file-or-dir)))
+       ((file-directory-p file-or-dir)
+	(dolist (org-file (find-org-file-recursively file-or-dir filext)
+			  org-file-list) ; add files found to result
+	  (add-to-list 'org-file-list org-file)))))))
+
+;; Org agenda
+(setq org-agenda-files '("/home/db/Dropbox/org"))
+(setq org-agenda-file-regexp "\\`[^.].*\\.\\(org$\\|note$\\)\\'")
+;; (setq org-agenda-text-search-extra-files
+;;       (append (find-org-file-recursively "~/org/dir1/" "txt")
+;;               (find-org-file-recursively "~/org/dir2/" "tex")))
+
 
 ; Refile targets include this file and any file contributing to the agenda - up to 5 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5))))
@@ -24,6 +69,7 @@
 (setq org-outline-path-complete-in-steps t)
 
 
+;; org todo
 (setq org-todo-keywords
       (quote ((sequence "TODO(t!)" "STARTED(s!)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "SOMEDAY(S)" "PROJECT(P@)" "|" "CANCELLED(c@/!)"))))
@@ -99,10 +145,8 @@
 
 ;; (add-hook 'org-mode-hook 'inhibit-autopair)
 
-(setq org-directory "/home/db/Dropbox/org")
-(setq org-default-notes-file (concat org-directory "/misc.org"))
-(define-key global-map "\C-cc" 'org-capture)
 
+;; org-crypt
 ;;; delay org-crypt start for its' slowly
 (defun enable-crypt()
   (require 'org-crypt)
@@ -113,7 +157,6 @@
 (setq org-crypt-key nil)
 ;; GPG key to use for encryption
 ;; Either the Key ID or set to nil to use symmetric encryption.
-
 (setq auto-save-default nil)
 ;; Auto-saving does not cooperate with org-crypt.el: so you need
 ;; to turn it off if you plan to use org-crypt.el quite often.
@@ -125,40 +168,21 @@
 ;; # -*- buffer-auto-save-file-name: nil; -*-
 
 
-;;; templates
-(setq org-capture-templates
-      '(("J" "Personal Journal" entry (file+datetree (concat org-directory "/PJournal.org"))
-         "* %?\nCreated: %T\n	%i\n")
-        ("j" "Journal" entry (file+datetree (concat org-directory "/dairy.org"))
-         "* %?\nCreated: %T\n	%i\n")
-        ("t" "TODO" entry (file+headline (concat org-directory "/todo.org") "Tasklist")
-         "* TODO %?\n%U\n\n")
-        ("n" "Take a note" entry (file (concat org-directory "/notes.org"))
-         "* %?\n%U\n")
-        ))
-
 (add-hook 'org-mode-hook
           (lambda () (imenu-add-to-menubar "Imenu")))
 ;; By default the index is two levels deep--you can modify the depth
 ;; using the option `org-imenu-depth'.
 
-(setq org-use-speed-commands t)
-
-;;(setq org-agenda-file-regexp "\\`[^.].*\\.org|prj\\'")
-(setq org-agenda-files   (quote ("/home/db/Dropbox/org")))
 
 ;;; conflict packages
 (add-hook 'org-shiftup-final-hook 'windmove-up)
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
-
 ; (add-hook 'org-mode-hook
           ; (lambda ()
             ; (org-set-local 'yas/trigger-key [tab])
             ; (define-key yas/keymap [tab] 'yas/next-field-or-maybe-expand)))
 
-(setq org-tags-column -77)
-(setq org-pretty-entities t)
 
 (provide 'init-org)
