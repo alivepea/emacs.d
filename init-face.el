@@ -1,5 +1,10 @@
 ;; initial appearance
 
+;; theme
+;; (color-theme-initialize)
+;; (color-theme-classic)
+(load-theme 'tango-dark t)
+
 (setq inhibit-startup-message t) 
 (set-scroll-bar-mode nil)
 (tool-bar-mode -1)
@@ -28,13 +33,11 @@
 (set-face-attribute 'default nil
 	       :height 120)
 
-;; theme
-(color-theme-initialize)
-(color-theme-classic)
 
 (setq x-stretch-cursor t)
 (setq show-trailing-whitespace t)
 
 (global-set-key (kbd "<f1>") 'menu-bar-mode)
+
 
 (provide 'init-face)
