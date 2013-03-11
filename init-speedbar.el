@@ -27,4 +27,22 @@
       '(c-mode-hook)) ; <-- list like '(c-mode-hook c++-mode-hook java-mode-hook)
 
 
+;; sr-speedbar
+(add-to-list 'load-path "~/.emacs.d/sr-speedbar")
+(require 'sr-speedbar)
+(defun my-sr-speedbar ()
+  "open sr-speedbar and select sr-speedbar"
+  (interactive)
+  (unless (sr-speedbar-exist-p)
+    (sr-speedbar-open))
+  (sr-speedbar-select-window))
+
+(global-set-key (kbd "C-<f2>") 'my-sr-speedbar)
+(setq sr-speedbar-width-x 60)
+(setq sr-speedbar-max-width 80)
+(setq sr-speedbar-skip-other-window-p t)
+(setq sr-speedbar-right-side t)
+(setq sr-speedbar-delete-window nil)
+
+
 (provide 'init-speedbar)
