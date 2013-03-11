@@ -38,8 +38,10 @@
   (sr-speedbar-select-window))
 
 (global-set-key (kbd "C-<f2>") 'my-sr-speedbar)
-(setq sr-speedbar-width-x 60)
-(setq sr-speedbar-max-width 80)
+(setq sr-speedbar-width-x 36)
+(setq sr-speedbar-width-console 36)
+(setq sr-speedbar-width 36)
+(setq sr-speedbar-max-width 50)
 (setq sr-speedbar-skip-other-window-p t)
 (setq sr-speedbar-right-side t)
 (setq sr-speedbar-delete-window nil)
