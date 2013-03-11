@@ -5,17 +5,12 @@
 (setq message-log-max t)
 (setq isearch-allow-scroll t)
 (setq show-trailing-whitespace t)
+(setq global-mark-ring-max 160)
 
 (auto-compression-mode 1)
 
 ;; (global-set-key (kbd "C-.") 'set-mark-command)
 
-;; This is due to a bug in the function `eval-after-load' in some
-;; versions of (X)Emacs.  It can manifest itself when there is a
-;; symbolic link in the path of the directory which contains
-;; (X)Emacs.  As a workaround, put the following into your `.emacs'
-;; file, fairly early on:
-(setq font-lock-maximum-decoration 2)
 
 (show-paren-mode t)
 (setq show-paren-style 'mixed)
