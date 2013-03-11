@@ -1,7 +1,7 @@
-
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 (setq minibuffer-message-timeout 1)  
+(setq enable-recursive-minibuffers t)
 
 ;; ido replace it
 ;; (iswitchb-mode)

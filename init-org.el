@@ -23,7 +23,7 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline (concat org-directory "/gtd.org") "Tasks")
-	 "* TODO %?\n" :empty-lines 1)
+	 "* TODO %? %U\n" :empty-lines 1)
         ("j" "Journal" entry (file+datetree (concat org-directory "/journal.org"))
 	 "* %?\n%i\n")))
 
