@@ -11,10 +11,6 @@
 
 ;; (global-set-key (kbd "C-.") 'set-mark-command)
 
-
-(show-paren-mode t)
-(setq show-paren-style 'mixed)
-
 ;; jump-char
 (require 'jump-char)
 (global-set-key (kbd "C-;") 'jump-char-forward)
