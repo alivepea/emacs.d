@@ -7,7 +7,8 @@
 (global-set-key (kbd "C-x C-w") 'kill-region)
 
 ;; [M-q] fill-paragrah
-(setq default-fill-column 70)
+(setq-default fill-column 76)
+(auto-fill-mode t)
 ;;设置 sentence-end 可以识别中文标点。不用在 fill 时在句号后插入两个空
 ;;格。
 (setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
