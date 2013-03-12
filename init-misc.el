@@ -1,4 +1,3 @@
-
 (setq make-backup-files nil)
 (setq mouse-yank-at-point t)
 (setq kill-ring-max 1024)
@@ -10,10 +9,6 @@
 (auto-compression-mode 1)
 
 ;; (global-set-key (kbd "C-.") 'set-mark-command)
-
-
-(show-paren-mode t)
-(setq show-paren-style 'mixed)
 
 ;; jump-char
 (require 'jump-char)
@@ -39,6 +34,10 @@
       woman-fill-frame t                ;填充满屏幕
       woman-use-own-frame nil           ;同一个frame
       woman-cache-level 3)              ;缓存级别, 最快
+
+;; occur
+(define-key occur-mode-map "n" 'occur-next)
+(define-key occur-mode-map "p" 'occur-prev)
 
 
 (provide 'init-misc)
