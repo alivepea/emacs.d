@@ -17,6 +17,7 @@
 	     (setq mouse-yank-at-point t)
 	     (setq transient-mark-mode nil)
 	     (setq scroll-margin 0)
+	     (setq show-trailing-whitespace nil)
 	     (setq tab-width 8 ))))
 
 ;; enable cua and transient mark modes in term-line-mode

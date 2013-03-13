@@ -39,5 +39,7 @@
 (define-key occur-mode-map "n" 'occur-next)
 (define-key occur-mode-map "p" 'occur-prev)
 
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 (provide 'init-misc)
