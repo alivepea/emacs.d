@@ -3,6 +3,14 @@
      (setq hl-line-face 'underline)
      (hl-line-mode 1)))
 
+(add-hook 'dired-mode-hook
+	  '(lambda ()
+	     (gtags-mode t)))
+
+(add-hook 'makefile-gmake-mode-hook
+	  '(lambda ()
+	     (gtags-mode t)))
+
 
 (setq gtags-disable-pushy-mouse-mapping t)
 (setq gtags-suggested-key-mapping t)
