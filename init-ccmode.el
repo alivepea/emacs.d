@@ -27,6 +27,11 @@
 	     (hs-minor-mode t)
 	     (setq show-trailing-whitespace t)))
 
+(add-hook 'c-mode-common-hook
+	  (lambda ()
+	    (define-key c-mode-base-map (kbd "C-c C-u")
+	      'c-up-conditional-with-else)))
+
 (which-function-mode t)
 
 
