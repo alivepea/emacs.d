@@ -18,7 +18,7 @@
       org-startup-indented t)
 
 ;; Org capture
-(setq org-directory "/home/db/Dropbox/org")
+(setq org-directory "/home/dbox/Dropbox/org")
 (global-set-key (kbd "<C-f1>") 'org-capture)
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-capture-templates
