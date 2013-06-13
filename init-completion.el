@@ -17,10 +17,10 @@
 (setq ac-show-menu-immediately-on-auto-complete t)
 (setq ac-candidate-limit 400)
 
-
-(add-to-list 'ac-user-dictionary-files "~/.emacs.d/dict")
-
 (ac-flyspell-workaround)		;Auto completion will not be started in a buffer flyspell-mode enabled
+
+(add-to-list 'ac-sources 'ac-source-words-in-same-mode-buffers)
+(add-to-list 'ac-dictionary-directories "/usr/share/emacs/etc/auto-complete/dict/")
 
 (setq ac-modes
       (append ac-modes '(org-mode objc-mode sql-mode

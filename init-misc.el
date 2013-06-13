@@ -13,7 +13,8 @@
 ;; jump-char
 (require 'jump-char)
 (global-set-key (kbd "C-;") 'jump-char-forward)
-;; (global-set-key (kbd "C-S-;") 'jump-char-backward)
+(setq ace-jump-mode-gray-background nil)
+(setq ace-jump-mode-scope 'frame)
 
 ;; recentf
 (recentf-mode 1)
