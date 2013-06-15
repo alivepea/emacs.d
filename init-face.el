@@ -46,6 +46,8 @@
                       charset
                       (font-spec :family "WenQuanYi Micro Hei" :size 16)))
 
+(setq-default line-spacing .2)
+
 ;; For Linux
 (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
 (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
