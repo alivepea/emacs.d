@@ -8,7 +8,7 @@
 (set-face-attribute 'default nil
 	       :height 120)
 
-(setq inhibit-startup-message t) 
+(setq inhibit-startup-message t)
 (set-scroll-bar-mode nil)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -36,15 +36,26 @@
 (setq x-stretch-cursor t)
 (setq-default show-trailing-whitespace t)
 
-;; Setting English Font
-(set-face-attribute
-  'default nil :font "Dejavu Sans Mono 12")
+(defun frame-setting ()
+  (interactive)
+  ;; Setting English Font
+  (set-face-attribute
+   'default nil :font "Dejavu Sans Mono 12")
 
-;; Chinese Font
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  ;; Chinese Font
+  (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
                       charset
-                      (font-spec :family "WenQuanYi Micro Hei" :size 16)))
+                      (font-spec :family "文泉驿微米黑" :size 16))))
+
+(if (and (fboundp 'daemonp) (daemonp))
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (frame-setting)
+                  ;; (tabbar-mode t)
+          (blink-cursor-mode t))))
+  (frame-setting))
 
 (setq-default line-spacing .2)
 
