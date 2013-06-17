@@ -1,6 +1,7 @@
 PREREQUISITE:
 For gentoo:
     $ emerge auto-complete yasnippet zenburn smex
+    $ emerge wqy-microhei dejavu
 
 Install packages NOT in gentoo's portage:
     $ git submodule init
