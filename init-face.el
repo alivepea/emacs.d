@@ -38,15 +38,15 @@
 
 (defun frame-setting ()
   (interactive)
-  ;; Setting English Font
-  (set-face-attribute
-   'default nil :font "Dejavu Sans Mono 12")
-
-  ;; Chinese Font
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font)
-                      charset
-                      (font-spec :family "文泉驿微米黑" :size 16))))
+  (cond (window-system
+		  ;; Setting English Font
+		  (set-face-attribute
+			'default nil :font "Dejavu Sans Mono 12")
+		  ;; Chinese Font
+		  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+			(set-fontset-font (frame-parameter nil 'font)
+							  charset
+							  (font-spec :family "文泉驿微米黑" :size 16))))))
 
 (if (and (fboundp 'daemonp) (daemonp))
     (add-hook 'after-make-frame-functions
