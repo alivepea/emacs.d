@@ -2,7 +2,7 @@
 (add-to-list 'load-path "~/.emacs.d/shell-pop")
 (require 'shell-pop)
 (shell-pop-set-internal-mode "ansi-term")
-(shell-pop-set-internal-mode-shell "/bin/bash")
+(shell-pop-set-internal-mode-shell "/bin/zsh")
 (shell-pop-set-window-height 60)
 (global-set-key (kbd "<f11>") 'shell-pop)
 
