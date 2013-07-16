@@ -15,6 +15,7 @@
 (require 'init-diff)
 (require 'init-eim)
 (require 'init-browser)
+(require 'init-woman)
 
 (require 'init-org)
 (require 'init-ccmode)

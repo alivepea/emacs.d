@@ -29,13 +29,6 @@
 (global-set-key (kbd "<f12>") 'recentf-ido-find-file)
 
 
-;;; ### Woman ###
-;;; --- 手册查询
-(setq woman-default-indent 7            ;缩进格式
-      woman-fill-frame t                ;填充满屏幕
-      woman-use-own-frame nil           ;同一个frame
-      woman-cache-level 3)              ;缓存级别, 最快
-
 ;; occur
 (define-key occur-mode-map "n" 'occur-next)
 (define-key occur-mode-map "p" 'occur-prev)

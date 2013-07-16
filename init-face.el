@@ -54,7 +54,7 @@
                 (with-selected-frame frame
                   (frame-setting)
                   ;; (tabbar-mode t)
-          (blink-cursor-mode t))))
+          (blink-cursor-mode -1))))
   (frame-setting))
 
 (setq-default line-spacing .2)
