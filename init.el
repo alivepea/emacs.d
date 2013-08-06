@@ -23,6 +23,7 @@
 (require 'init-tags)
 (require 'init-term)
 (require 'init-markdown)
+(require 'init-gdb)
 
 (require 'git-emacs)
 
