@@ -26,6 +26,7 @@
 (require 'init-gdb)
 
 (require 'git-emacs)
+(require 'buffer-move)
 
 (require 'init-misc)
 
