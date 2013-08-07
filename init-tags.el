@@ -12,6 +12,7 @@
 	     (gtags-mode t)))
 
 
+(setq gtags-ignore-case nil)
 (setq gtags-disable-pushy-mouse-mapping t)
 (setq gtags-suggested-key-mapping t)
 
