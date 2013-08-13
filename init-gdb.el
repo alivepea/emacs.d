@@ -1,14 +1,13 @@
 (setq gud-gdb-command-name "gdb -i=mi --annotate=1")
-(setq gdb-many-windows t)
 (gud-tooltip-mode t)
 (setq gdb-show-main t)
+(setq gdb-show-changed-values t)
 (setq gdb-use-colon-colon-notation t)
 
-
+;; layout
 (add-hook 'gdb-mode-hook '(lambda ()
-                            (define-key c-mode-base-map [(f5)] 'gud-go)
-                            (define-key c-mode-base-map [(f7)] 'gud-step)
-                            (define-key c-mode-base-map [(f8)] 'gud-next)))
-
+			    (gdb-frame-breakpoints-buffer) ; Adapt tiling WM
+			    (gdb-frame-stack-buffer)
+			    (gdb-frame-locals-buffer)))
 
 (provide 'init-gdb)
