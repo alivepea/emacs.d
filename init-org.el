@@ -169,7 +169,9 @@ If FILEXT is provided, return files with extension FILEXT instead."
 
 
 (add-hook 'org-mode-hook
-          (lambda () (imenu-add-to-menubar "Imenu")))
+          (lambda () (imenu-add-to-menubar "Imenu")
+	    (local-unset-key (kbd "C-<tab>")) ; restore global-key (other-window 1)
+	    ))
 ;; By default the index is two levels deep--you can modify the depth
 ;; using the option `org-imenu-depth'.
 
