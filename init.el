@@ -16,6 +16,7 @@
 (require 'init-eim)
 (require 'init-browser)
 (require 'init-woman)
+(require 'init-ispell)
 
 (require 'init-org)
 (require 'init-ccmode)
