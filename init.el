@@ -1,6 +1,8 @@
 ;; -*- coding: utf-8 -*-
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 
+(setenv "LANG" "en_US.UTF8")
+
 (require 'init-site-lisp)
 (require 'init-face)
 (require 'init-speedbar)
