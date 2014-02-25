@@ -16,3 +16,6 @@
 [submodule "site-lisp/el-get"]
 	path = site-lisp/el-get
 	url = https://github.com/dimitri/el-get.git
+[submodule "site-lisp/auto-complete-clang"]
+	path = site-lisp/auto-complete-clang
+	url = https://github.com/brianjcj/auto-complete-clang.git
