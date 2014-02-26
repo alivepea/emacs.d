@@ -3,16 +3,22 @@
 (autoload 'flymake-find-file-hook "flymake" "" t)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 (setq flymake-gui-warnings-enabled nil)
-(setq flymake-log-level 1)
+(setq flymake-log-level 0)
+(setq flymake-no-changes-timeout 1)
+(setq flymake-start-syntax-check-on-find-file nil)
+
 
 ;; clang
 (defun flymake-clang-init ()
- (let* ((temp-file (flymake-init-create-temp-buffer-copy
- 'flymake-create-temp-inplace))
- (local-file (file-relative-name
- temp-file
- (file-name-directory buffer-file-name))))
- (list "clang" (list "-fsyntax-only" "-fno-color-diagnostics" local-file))))
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+		     'flymake-create-temp-inplace))
+	 (local-file (file-relative-name
+		      temp-file
+		      (file-name-directory buffer-file-name))))
+    (list "clang" (append ac-clang-flags
+			  (list "-fsyntax-only" "-fno-color-diagnostics" local-file)))
+    )
+  )
 
 (defun flymake-clang-load ()
   (interactive)

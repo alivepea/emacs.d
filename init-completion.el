@@ -44,13 +44,33 @@
 			     yas/completing-prompt
 			     yas/no-prompt))
 
+;; clang
 
-(defun my-ac-cc-mode-setup ()
-  (add-to-list 'ac-sources 'ac-source-clang)
+(defun ac-clang-flags-kernel ()
+  (interactive)
   (setq ac-clang-flags
 	(mapcar (lambda (item)(concat "-I" item))
 		(split-string
 		 "
+ .
+ /usr/src/linux/include
+ /usr/src/linux/include/uapi
+ /usr/src/linux/arch/arm/include
+ /usr/src/linux/arch/arm/include/uapi
+ /usr/src/linux/arch/ia64/include
+ /usr/src/linux/arch/ia64/include/uapi
+ /usr/src/linux/include/generated/uapi
+"
+		 )))
+  )
+
+(defun ac-clang-flags-userspace ()
+  (interactive)
+  (setq ac-clang-flags
+	(mapcar (lambda (item)(concat "-I" item))
+		(split-string
+		 "
+.
  /usr/lib/gcc/x86_64-pc-linux-gnu/4.8.2/include/g++-v4
  /usr/lib/gcc/x86_64-pc-linux-gnu/4.8.2/include/g++-v4/x86_64-pc-linux-gnu
  /usr/lib/gcc/x86_64-pc-linux-gnu/4.8.2/include/g++-v4/backward
@@ -60,6 +80,12 @@
 "
 		 )))
   )
+
+(defun my-ac-cc-mode-setup ()
+  (add-to-list 'ac-sources 'ac-source-clang)
+  (ac-clang-flags-userspace)
+  )
+
 
 (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
 
