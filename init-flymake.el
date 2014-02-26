@@ -1,3 +1,4 @@
+(require 'flymake)
 
 (autoload 'flymake-find-file-hook "flymake" "" t)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
@@ -15,7 +16,7 @@
 
 (defun flymake-clang-load ()
   (interactive)
-  (message "hello")
+  (message "flymak clang loading...")
   (unless (eq buffer-file-name nil)
     (add-to-list 'flymake-allowed-file-name-masks
 		 '("\\.c\\'" flymake-clang-init))
@@ -65,7 +66,7 @@
 ;; erlang
 (defun flymake-erlang-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
-		     'flymake-create-temp-inplace))
+			 'flymake-create-temp-inplace))
 	 (local-file (file-relative-name temp-file
 		(file-name-directory buffer-file-name))))
     (list "path_to_eflymake_script" (list local-file))))
@@ -75,16 +76,35 @@
 
 ;; elisp
 (defun flymake-elisp-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-         (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-    (list "elisplint" (list local-file))))
+  (unless (string-match "^ " (buffer-name))
+    (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+                         'flymake-create-temp-inplace))
+           (local-file  (file-relative-name
+                         temp-file
+                         (file-name-directory buffer-file-name))))
+      (list
+       (expand-file-name invocation-name invocation-directory)
+       (list
+        "-Q" "--batch" "--eval" 
+        (prin1-to-string
+         (quote
+          (dolist (file command-line-args-left)
+            (with-temp-buffer
+              (insert-file-contents file)
+              (condition-case data
+                  (scan-sexps (point-min) (point-max))
+                (scan-error
+                 (goto-char(nth 2 data))
+                 (princ (format "%s:%s: error: Unmatched bracket or quote\n"
+                                file (line-number-at-pos)))))))
+          )
+         )
+        local-file)))))
 (push '("\\.el$" flymake-elisp-init) flymake-allowed-file-name-masks)
 (add-hook 'emacs-lisp-mode-hook
           ;; workaround for (eq buffer-file-name nil)
           (function (lambda () (if buffer-file-name (flymake-mode)))))
+
 
 
 (provide 'init-flymake)
