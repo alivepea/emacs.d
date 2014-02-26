@@ -27,6 +27,7 @@
 (require 'init-term)
 (require 'init-markdown)
 (require 'init-gdb)
+(require 'init-flymake)
 
 (require 'git-emacs)
 (require 'buffer-move)
