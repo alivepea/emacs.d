@@ -19,7 +19,8 @@
 ;; recentf
 (recentf-mode 1)
 (setq recentf-max-saved-items 400)      ;最近打开文件的最大数量
-(setq recentf-auto-cleanup 300)         ;自动清理最近打开文件列表中重复或其他文件的时间间隔 (秒)
+;; (setq recentf-auto-cleanup 'mode)         ;自动清理最近打开文件列表中重复或其他文件的时间间隔 (秒)
+(setq recentf-save-file "~/.recentf")
 (defun recentf-ido-find-file ()
   "Find a recent file using Ido."
   (interactive)
